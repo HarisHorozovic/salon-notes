@@ -45,7 +45,7 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.card}>
         <TextInput
           style={styles.input_base}
-          placeholder="Username"
+          placeholder="Email"
           onChangeText={setEmail}
         />
         <TextInput
@@ -55,7 +55,7 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={setPassword}
         />
 
-        <CustomButton label="Login" onPress={handleLogin} />
+        <CustomButton label="Login" onPress={handleLogin} color="primary" />
 
         <View style={{ flexDirection: "row", marginTop: 20 }}>
           <Text>Don't have an account?</Text>

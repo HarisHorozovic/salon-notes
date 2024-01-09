@@ -7,27 +7,29 @@ import {
 } from "react-native";
 import { useState } from "react";
 
+const colorSchemes = {
+  primary: { backgroundColor: "#8F00FF", color: "#fff" },
+  default: { backgroundColor: "#ccc", color: "#000" },
+};
+
 export default function CustomButton({
   label,
   onPress,
-  backgroundColor,
-  textColor,
+  color = "default",
 }: {
   label: string;
   onPress?: (e: GestureResponderEvent) => void;
-  backgroundColor?: string;
-  textColor?: string;
+  color?: "primary" | "default";
 }) {
   const [isPress, setIsPress] = useState(false);
 
   const styles = StyleSheet.create({
     container: { alignItems: "center", justifyContent: "center" },
     button: {
-      height: 30,
-      color: textColor || "#000",
-      backgroundColor: backgroundColor || "#ccc",
-      paddingVertical: 5,
-      paddingHorizontal: 12,
+      height: 40,
+      ...colorSchemes[color],
+      paddingVertical: 10,
+      paddingHorizontal: 20,
       borderRadius: 5,
       shadowColor: "rgba(0,0,0, .4)",
       shadowOffset: { width: -2, height: 4 },
@@ -37,10 +39,9 @@ export default function CustomButton({
     },
     button_press: {
       height: 30,
-      color: textColor || "#000",
-      backgroundColor: backgroundColor || "#ccc",
-      paddingVertical: 5,
-      paddingHorizontal: 12,
+      ...colorSchemes[color],
+      paddingVertical: 10,
+      paddingHorizontal: 20,
       borderRadius: 5,
     },
   });
@@ -58,7 +59,7 @@ export default function CustomButton({
         }}
         style={isPress ? styles.button_press : styles.button}
       >
-        <Text>{label}</Text>
+        <Text style={colorSchemes[color]}>{label}</Text>
       </TouchableOpacity>
     </View>
   );
