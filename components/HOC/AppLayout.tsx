@@ -10,7 +10,7 @@ export default function AppLayout({
 }) {
   return (
     //   App level background color goes here
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingBottom: 60 }}>
       {children}
       {!hideNavigation && (
         <NavigationBar items={[{ text: "Home", icon: "home", to: "Home" }]} />

@@ -13,18 +13,22 @@ const colorSchemes = {
 };
 
 export default function CustomButton({
+  children,
   label,
   onPress,
   color = "default",
+  position = "center",
 }: {
-  label: string;
+  children?: any;
+  label?: string;
   onPress?: (e: GestureResponderEvent) => void;
   color?: "primary" | "default";
+  position?: "flex-end" | "flex-start" | "center";
 }) {
   const [isPress, setIsPress] = useState(false);
 
   const styles = StyleSheet.create({
-    container: { alignItems: "center", justifyContent: "center" },
+    container: { alignItems: position, justifyContent: "center" },
     button: {
       height: 40,
       ...colorSchemes[color],
@@ -36,6 +40,7 @@ export default function CustomButton({
       shadowOpacity: 1,
       shadowRadius: 1,
       elevation: 2,
+      margin: 10,
     },
     button_press: {
       height: 30,
@@ -43,6 +48,7 @@ export default function CustomButton({
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 5,
+      margin: 10,
     },
   });
 
@@ -59,7 +65,7 @@ export default function CustomButton({
         }}
         style={isPress ? styles.button_press : styles.button}
       >
-        <Text style={colorSchemes[color]}>{label}</Text>
+        {children ? children : <Text style={colorSchemes[color]}>{label}</Text>}
       </TouchableOpacity>
     </View>
   );
