@@ -5,6 +5,7 @@ import { signup } from "../api/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../styles";
 import CustomButton from "../components/CustomButton";
+import AppLayout from "../components/HOC/AppLayout";
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -24,48 +25,54 @@ const SignupScreen = ({ navigation }) => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        marginBottom: 50,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <View style={styles.card}>
-        <TextInput
-          style={styles.input_base}
-          placeholder="Email"
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={styles.input_base}
-          placeholder="Password"
-          secureTextEntry={true}
-          onChangeText={setPassword}
-        />
+    <AppLayout hideNavigation>
+      <View
+        style={{
+          flex: 1,
+          marginBottom: 50,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View style={styles.card}>
+          <TextInput
+            style={styles.input_base}
+            placeholder="Email"
+            onChangeText={setEmail}
+          />
+          <TextInput
+            style={styles.input_base}
+            placeholder="Password"
+            secureTextEntry={true}
+            onChangeText={setPassword}
+          />
 
-        <CustomButton label="Sign up" onPress={handleSignup} color="primary" />
+          <CustomButton
+            label="Sign up"
+            onPress={handleSignup}
+            color="primary"
+          />
 
-        <View style={{ flexDirection: "row", marginTop: 20 }}>
-          <Text>Don't have an account?</Text>
+          <View style={{ flexDirection: "row", marginTop: 20 }}>
+            <Text>Don't have an account?</Text>
 
-          <Link
-            style={styles.link}
-            to="Signup"
-            onPress={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
+            <Link
+              style={styles.link}
+              to="Signup"
+              onPress={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
 
-              navigation.navigate("Login");
-            }}
-          >
-            {" "}
-            Log in
-          </Link>
+                navigation.navigate("Login");
+              }}
+            >
+              {" "}
+              Log in
+            </Link>
+          </View>
         </View>
       </View>
-    </View>
+    </AppLayout>
   );
 };
 

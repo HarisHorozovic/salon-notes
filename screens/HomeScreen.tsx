@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
-import CloudinaryUploader from "../components/CloudinaryUploader";
+import AppLayout from "../components/HOC/AppLayout";
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>Home Screen</Text>
-      <CloudinaryUploader />
-    </View>
+    <AppLayout>
+      <View>
+        <Text>Home Screen</Text>
+      </View>
+    </AppLayout>
   );
 };
 

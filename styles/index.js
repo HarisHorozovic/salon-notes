@@ -27,4 +27,15 @@ const styles = StyleSheet.create({
   },
 });
 
+export const colors = {
+  light: {
+    backgroundColor: "#fff",
+    color: "#000",
+  },
+  dark: {
+    backgroundColor: "#fff",
+    color: "#000",
+  },
+};
+
 export default styles;
