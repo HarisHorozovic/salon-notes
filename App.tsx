@@ -7,24 +7,6 @@ import DetailScreen from "./screens/DetailScreen";
 import SignupScreen from "./screens/SignupScreen";
 import LoginScreen from "./screens/LoginScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.tsx to start working on your app!</Text>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
@@ -33,22 +15,22 @@ export default function App() {
         <Stack.Screen
           name="Signup"
           component={SignupScreen}
-          options={{ title: "Signup" }}
+          options={{ title: "Salon App" }}
         />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ title: "Login" }}
+          options={{ title: "Salon App" }}
         />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Home page list" }}
+          options={{ title: "Salon App" }}
         />
         <Stack.Screen
           name="Detail"
           component={DetailScreen}
-          options={{ title: "Add or edit" }}
+          options={{ title: "Salon App" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
