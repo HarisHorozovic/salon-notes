@@ -10,6 +10,7 @@ import Card from '../Card';
 import Text from '../Text';
 import getStyle from '../../styles';
 import ImageUploader from '../ImageUploader';
+import {showMessage} from 'react-native-flash-message';
 
 export default function NoteForm({note}: {note: any}) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -111,13 +112,10 @@ export default function NoteForm({note}: {note: any}) {
             await createNote(newNote);
             navigation.navigate('Home' as any);
           } catch (err) {
-            console.log(
-              '____________________________________________________________________________________',
-            );
-            console.log('create err', err);
-            console.log(
-              '____________________________________________________________________________________',
-            );
+            showMessage({
+              message: 'Something went wrong creating note, please try again',
+              type: 'danger',
+            });
           }
           setLoading(false);
         }}

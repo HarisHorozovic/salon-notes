@@ -8,6 +8,7 @@ import Input from '../components/Input';
 import Card from '../components/Card';
 import Link from '../components/Link';
 import Text from '../components/Text';
+import {showMessage} from 'react-native-flash-message';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -19,15 +20,11 @@ const LoginScreen = ({navigation}) => {
       if (token) {
         await AsyncStorage.setItem('authToken', token);
         navigation.navigate('Home');
+      } else {
+        showMessage({message: 'Invalid email or password', type: 'danger'});
       }
     } catch (error) {
-      console.log(
-        '____________________________________________________________________________________',
-      );
-      console.log('Invalid email or password');
-      console.log(
-        '____________________________________________________________________________________',
-      );
+      showMessage({message: error.message, type: 'danger'});
     }
   };
 

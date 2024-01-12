@@ -15,6 +15,7 @@ import {
 } from '@env';
 import Text from '../Text';
 import {imageUploaderStyles} from './style';
+import {showMessage} from 'react-native-flash-message';
 // import { Entypo } from "@expo/vector-icons";
 
 const ImageUploader = ({
@@ -97,14 +98,8 @@ const ImageUploader = ({
       if (!result.didCancel) {
         setImages(result.assets);
       }
-    } catch (e) {
-      console.log(
-        '____________________________________________________________________________________',
-      );
-      console.log(e);
-      console.log(
-        '____________________________________________________________________________________',
-      );
+    } catch (error) {
+      showMessage({message: error.message, type: 'danger'});
     }
   };
 

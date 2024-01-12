@@ -24,6 +24,8 @@ import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import DetailScreen from './src/screens/DetailScreen';
 import SplashScreen from './src/screens/SplashScreen';
+import {Text} from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 
 // type SectionProps = PropsWithChildren<{
 //   title: string;
@@ -146,6 +148,7 @@ export default function App() {
           options={{title: 'Salon App'}}
         />
       </Stack.Navigator>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 }

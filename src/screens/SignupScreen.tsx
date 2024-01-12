@@ -8,6 +8,7 @@ import AppLayout from '../components/HOC/AppLayout';
 import Input from '../components/Input';
 import Card from '../components/Card';
 import Text from '../components/Text';
+import {showMessage} from 'react-native-flash-message';
 
 const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -22,13 +23,7 @@ const SignupScreen = ({navigation}) => {
         navigation.navigate('Home');
       }
     } catch (error) {
-      console.log(
-        '____________________________________________________________________________________',
-      );
-      console.log('Arrr matey! No treasure found. (Invalid credentials)');
-      console.log(
-        '____________________________________________________________________________________',
-      );
+      showMessage({message: 'Invalid credentials', type: 'danger'});
     }
   };
 

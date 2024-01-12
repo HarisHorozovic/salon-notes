@@ -6,6 +6,7 @@ import CustomButton from '../components/CustomButton';
 import NoteItem from '../components/NoteItem';
 import Input from '../components/Input';
 import Icon from '../components/Icon';
+import {showMessage} from 'react-native-flash-message';
 
 const HomeScreen = ({route, navigation}) => {
   const [notes, setNotes] = useState([]);
@@ -20,13 +21,10 @@ const HomeScreen = ({route, navigation}) => {
 
       setNotes(page === 1 ? result : [...notes, ...result]);
     } catch (error) {
-      console.log(
-        '____________________________________________________________________________________',
-      );
-      console.log(error);
-      console.log(
-        '____________________________________________________________________________________',
-      );
+      showMessage({
+        message: 'Something went wrong getting notes, please try again',
+        type: 'danger',
+      });
     }
     setLoading(false);
   };
