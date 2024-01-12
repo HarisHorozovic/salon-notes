@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {login} from '../api/auth';
-import {Link} from '@react-navigation/native';
-import styles from '../styles';
 import CustomButton from '../components/CustomButton';
 import AppLayout from '../components/HOC/AppLayout';
 import Input from '../components/Input';
 import Card from '../components/Card';
+import Link from '../components/Link';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -66,7 +65,6 @@ const LoginScreen = ({navigation}) => {
             <Text>Don't have an account?</Text>
 
             <Link
-              style={styles.link}
               to="Signup"
               onPress={e => {
                 e.preventDefault();

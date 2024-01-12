@@ -1,6 +1,6 @@
 import {TextInput, TextInputProps, useColorScheme} from 'react-native';
-import getStyle from './style';
 import {getStyleForProp} from '../../utils';
+import getStyle from '../../styles';
 
 export default function Input(props: TextInputProps) {
   const isDarkMode = useColorScheme() === 'dark';

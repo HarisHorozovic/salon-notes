@@ -1,4 +1,3 @@
-import getStyle from './style';
 import {
   ScrollView,
   ScrollViewProps,
@@ -7,6 +6,7 @@ import {
   ViewProps,
 } from 'react-native';
 import {getStyleForProp} from '../../utils';
+import getStyle from '../../styles';
 
 export default function Card(
   props: (ViewProps | ScrollViewProps) & {scroll?: boolean},
@@ -15,9 +15,7 @@ export default function Card(
   const style = getStyle(isDarkMode);
 
   return props.scroll ? (
-    <ScrollView
-      {...props}
-      style={getStyleForProp(getStyle(isDarkMode).card, props.style)}>
+    <ScrollView {...props} style={getStyleForProp(style.card, props.style)}>
       {props.children}
     </ScrollView>
   ) : (

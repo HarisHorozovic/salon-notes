@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
-import {Link} from '@react-navigation/native';
+import Link from '../components/Link';
 import {signup} from '../api/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import styles from '../styles';
 import CustomButton from '../components/CustomButton';
 import AppLayout from '../components/HOC/AppLayout';
 import Input from '../components/Input';
@@ -59,7 +58,6 @@ const SignupScreen = ({navigation}) => {
             <Text>Don't have an account?</Text>
 
             <Link
-              style={styles.link}
               to="Signup"
               onPress={e => {
                 e.preventDefault();
