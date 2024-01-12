@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {View, ScrollView, ActivityIndicator} from 'react-native';
 import AppLayout from '../components/HOC/AppLayout';
 import {getAllNotes} from '../api/notes';
-// import Entypo from "@expo/vector-icons/Entypo";
 import CustomButton from '../components/CustomButton';
 import NoteItem from '../components/NoteItem';
 import Input from '../components/Input';
-import Text from '../components/Text';
-// import { Ionicons } from "@expo/vector-icons";
+import Icon from '../components/Icon';
 
 const HomeScreen = ({route, navigation}) => {
   const [notes, setNotes] = useState([]);
@@ -55,8 +53,7 @@ const HomeScreen = ({route, navigation}) => {
               setNotes([]);
               getNotes(1, search).then();
             }}>
-            <Text>Search</Text>
-            {/*<Ionicons name="search" size={24} color="black" />*/}
+            <Icon iconProvider="ionic" name="search" />
           </CustomButton>
         </View>
         {/* Search bar functionality */}
@@ -66,8 +63,7 @@ const HomeScreen = ({route, navigation}) => {
           onPress={() => {
             navigation.navigate('Detail');
           }}>
-          <Text>Add to list</Text>
-          {/*<Entypo name="add-to-list" size={24} color="#fff" />*/}
+          <Icon iconProvider="entypo" name="add-to-list" />
         </CustomButton>
       </View>
       {/*<Button title={"Send req"} onPress={() => } />*/}

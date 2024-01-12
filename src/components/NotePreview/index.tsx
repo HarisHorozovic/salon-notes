@@ -6,7 +6,7 @@ import CustomButton from '../CustomButton';
 import Card from '../Card';
 import {notePreviewStyle} from './style';
 import Text from '../Text';
-// import { AntDesign } from "@expo/vector-icons";
+import Icon from '../Icon';
 
 export default function NotePreview({
   note,
@@ -23,13 +23,7 @@ export default function NotePreview({
           onPress={() => {
             setIsEdit(true);
           }}>
-          <Text>Edit icon</Text>
-          {/*<AntDesign*/}
-          {/*  name="edit"*/}
-          {/*  size={24}*/}
-          {/*  color="#fff"*/}
-          {/*  style={{marginRight: 2}}*/}
-          {/*/>*/}
+          <Icon iconProvider="antdesign" name="edit" style={{marginRight: 2}} />
         </CustomButton>
       </View>
       <Text style={notePreviewStyle.title}>{note.title}</Text>

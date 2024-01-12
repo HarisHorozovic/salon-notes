@@ -11,8 +11,9 @@ export type NoteItem = {
 };
 
 export type IconProps = {
-  iconProvider: 'fontawesome' | 'antdesign';
+  iconProvider: 'fontawesome' | 'antdesign' | 'ionic' | 'entypo';
   name: string;
   size?: number;
   color?: string;
+  style?: any;
 };

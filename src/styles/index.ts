@@ -41,6 +41,7 @@ const getStyle = (isDarkMode: boolean) =>
     text: {
       color: isDarkMode ? colors.dark.color : colors.light.color,
     },
+    icon_color: {color: isDarkMode ? colors.dark.color : colors.light.color},
 
     container: {
       flex: 1,
