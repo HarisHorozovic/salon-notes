@@ -1,20 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import Link from '../components/Link';
 import {signup} from '../api/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CustomButton from '../components/CustomButton';
 import AppLayout from '../components/HOC/AppLayout';
-import Input from '../components/Input';
 import Card from '../components/Card';
 import Text from '../components/Text';
 import {showMessage} from 'react-native-flash-message';
+import AuthForm from '../components/AuthForm';
 
 const SignupScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSignup = async () => {
+  const handleSignup = async (email: string, password: string) => {
     try {
       const token = await signup(email, password);
 
@@ -37,18 +33,7 @@ const SignupScreen = ({navigation}) => {
           justifyContent: 'center',
         }}>
         <Card>
-          <Input placeholder="Email" onChangeText={setEmail} />
-          <Input
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={setPassword}
-          />
-
-          <CustomButton
-            label="Sign up"
-            onPress={handleSignup}
-            color="primary"
-          />
+          <AuthForm onPress={handleSignup} />
 
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <Text>Don't have an account?</Text>

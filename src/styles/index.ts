@@ -101,6 +101,9 @@ export const colors: any = {
       default: {backgroundColor: '#ccc', color: '#000'},
     },
   },
+  global: {
+    danger: 'red',
+  },
 };
 
 export default getStyle;
