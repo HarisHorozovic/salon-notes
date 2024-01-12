@@ -1,23 +1,23 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Alert, View} from 'react-native';
-// import * as ImagePicker from "expo-image-picker";
 import {
   ImageLibraryOptions,
   launchImageLibrary,
 } from 'react-native-image-picker';
 import {encode as btoa} from 'base-64';
-import CustomButton from './CustomButton';
+import CustomButton from '../CustomButton';
 import {
   CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET,
   CLOUDINARY_UPLOAD_PRESET,
 } from '@env';
-import Text from './Text';
+import Text from '../Text';
+import {imageUploaderStyles} from './style';
 // import { Entypo } from "@expo/vector-icons";
 
-const CloudinaryUploader = ({
+const ImageUploader = ({
   onStart,
   onProgress,
   onDone,
@@ -127,18 +127,18 @@ const CloudinaryUploader = ({
   return (
     <View>
       {!hideDefaultProgress && images && images.length > 0 && (
-        <Text style={{marginVertical: 10, fontWeight: 'bold'}}>
+        <Text style={imageUploaderStyles.info_text}>
           Uploaded {uploadedImagesNumber} out of {images.length} images
         </Text>
       )}
       <CustomButton color="default" onPress={pickImage}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={imageUploaderStyles.button_container}>
           {/*<Entypo name="image" size={24} color="black" />*/}
-          <Text style={{marginLeft: 5}}>New image</Text>
+          <Text style={imageUploaderStyles.button_text}>New image</Text>
         </View>
       </CustomButton>
     </View>
   );
 };
 
-export default CloudinaryUploader;
+export default ImageUploader;

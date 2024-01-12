@@ -1,19 +1,12 @@
-import {View, StyleSheet} from 'react-native';
-import {NoteItemStep} from '../types';
+import {View} from 'react-native';
+import {NoteItemStep} from '../../types';
 import React from 'react';
-import CustomButton from './CustomButton';
-import Input from './Input';
-import Text from './Text';
+import CustomButton from '../CustomButton';
+import Input from '../Input';
+import Text from '../Text';
+import {stepsInputStyles} from './style';
 // import { FontAwesome } from "@expo/vector-icons";
 
-const inputStyles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-  input: {
-    flex: 1,
-  },
-});
 export default function StepsInput({
   value,
   index,
@@ -27,9 +20,9 @@ export default function StepsInput({
   onRemove: (index: number) => void;
 }) {
   return (
-    <View style={inputStyles.container}>
+    <View style={stepsInputStyles.container}>
       <Input
-        style={inputStyles.input}
+        style={stepsInputStyles.input}
         placeholder="Key"
         onChangeText={val => {
           setValue(index, val, value.value);
@@ -37,7 +30,7 @@ export default function StepsInput({
         value={value?.key}
       />
       <Input
-        style={inputStyles.input}
+        style={stepsInputStyles.input}
         placeholder="Value"
         onChangeText={val => {
           if (value.key) {

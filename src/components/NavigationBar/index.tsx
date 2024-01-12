@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from '../Card';
 import Text from '../Text';
+import {navigationBarStyles} from './style';
 
 type NavigationItem = {
   text: string;
@@ -13,22 +14,6 @@ type NavigationItem = {
 };
 export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
   const navigation = useNavigation();
-
-  const styles = StyleSheet.create({
-    nav: {
-      paddingVertical: 15,
-      paddingHorizontal: 20,
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      bottom: 0,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      borderRadius: 0,
-    },
-    nav_item: {marginHorizontal: 5},
-  });
 
   const handleLogout = async () => {
     const item = await AsyncStorage.getItem('authToken');
@@ -40,7 +25,7 @@ export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
   };
 
   return (
-    <Card style={styles.nav}>
+    <Card style={navigationBarStyles.nav}>
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
         {items.map((item: NavigationItem, index: number) => (
           <TouchableOpacity

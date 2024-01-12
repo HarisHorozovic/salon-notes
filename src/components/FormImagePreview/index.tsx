@@ -1,9 +1,10 @@
 import {Image, View} from 'react-native';
 import React from 'react';
-import {NoteItem} from '../types';
+import {NoteItem} from '../../types';
 // import { FontAwesome } from "@expo/vector-icons";
-import CustomButton from './CustomButton';
-import Text from './Text';
+import CustomButton from '../CustomButton';
+import Text from '../Text';
+import {formImagePreviewStyles} from './style';
 
 export default function FormImagePreview({
   images,
@@ -15,35 +16,17 @@ export default function FormImagePreview({
   newNote: NoteItem;
 }) {
   return images && images.length > 0 ? (
-    <View
-      style={{
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        paddingLeft: 5,
-        justifyContent: 'center',
-      }}>
+    <View style={formImagePreviewStyles.main_container}>
       {images.map((uri: any, index: number) => (
-        <View
-          key={index}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-          }}>
+        <View key={index} style={formImagePreviewStyles.image_container}>
           <Image
             key={index}
             source={
               typeof uri === 'string'
                 ? {uri}
-                : require('../../assets/broken-image.png')
+                : require('../../../assets/broken-image.png')
             }
-            style={{
-              width: 180,
-              marginVertical: 5,
-              height: undefined,
-              aspectRatio: 1,
-              marginRight: images.length - 1 === index ? 10 : 0,
-            }}
+            style={formImagePreviewStyles.image}
           />
           <CustomButton
             color="danger"

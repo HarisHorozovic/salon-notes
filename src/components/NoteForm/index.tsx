@@ -1,15 +1,15 @@
 import {useState} from 'react';
-import CloudinaryUploader from './CloudinaryUploader';
-import {NoteItem, NoteItemStep} from '../types';
-import StepsInput from './StepsInput';
-import CustomButton from './CustomButton';
-import FormImagePreview from './FormImagePreview';
-import {createNote} from '../api/notes';
+import {NoteItem, NoteItemStep} from '../../types';
+import StepsInput from '../StepsInput';
+import CustomButton from '../CustomButton';
+import FormImagePreview from '../FormImagePreview';
+import {createNote} from '../../api/notes';
 import {useNavigation} from '@react-navigation/native';
-import Input from './Input';
-import Card from './Card';
-import Text from './Text';
-import getStyle from '../styles';
+import Input from '../Input';
+import Card from '../Card';
+import Text from '../Text';
+import getStyle from '../../styles';
+import ImageUploader from '../ImageUploader';
 
 export default function NoteForm({note}: {note: any}) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,11 +17,7 @@ export default function NoteForm({note}: {note: any}) {
     note || {
       title: '',
       // images: [],
-      images: [
-        'https://res.cloudinary.com/akanotenshi/image/upload/v1704890949/salon_app/hvo0v7ydlg1lgswbnplv.jpg',
-        'https://res.cloudinary.com/akanotenshi/image/upload/v1704891001/salon_app/otgq5lahm47u1tttp4yw.jpg',
-        'https://res.cloudinary.com/akanotenshi/image/upload/v1704891046/salon_app/h0t6qqh7mwhvc7nowebw.jpg',
-      ],
+      images: [],
       steps: [],
       description: '',
     },
@@ -45,7 +41,7 @@ export default function NoteForm({note}: {note: any}) {
         setNewNote={setNewNote}
         newNote={newNote}
       />
-      <CloudinaryUploader
+      <ImageUploader
         onDone={images => {
           const uploaded = images?.map((image: any) => image.secure_url);
 
