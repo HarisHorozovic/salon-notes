@@ -1,4 +1,4 @@
-import {ScrollView, TextInput, Text} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import {useState} from 'react';
 import CloudinaryUploader from './CloudinaryUploader';
 import styles from '../styles';
@@ -8,6 +8,7 @@ import CustomButton from './CustomButton';
 import FormImagePreview from './FormImagePreview';
 import {createNote} from '../api/notes';
 import {useNavigation} from '@react-navigation/native';
+import Input from './Input';
 
 export default function NoteForm({note}: {note: any}) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,8 +31,7 @@ export default function NoteForm({note}: {note: any}) {
   return (
     <ScrollView style={{...styles.card, margin: 10}}>
       {/* title */}
-      <TextInput
-        style={styles.input_base}
+      <Input
         placeholder="Title"
         onChangeText={value => {
           setNewNote({...newNote, title: value});
@@ -93,8 +93,8 @@ export default function NoteForm({note}: {note: any}) {
         }}
       />
       {/* description */}
-      <TextInput
-        style={[styles.input_base, styles.text_area]}
+      <Input
+        style={styles.text_area}
         placeholder="Description"
         onChangeText={value => {
           setNewNote({...newNote, description: value});

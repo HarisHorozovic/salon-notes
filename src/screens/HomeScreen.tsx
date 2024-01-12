@@ -1,17 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  ScrollView,
-  ActivityIndicator,
-  TextInput,
-  Text,
-} from 'react-native';
+import {View, ScrollView, ActivityIndicator, Text} from 'react-native';
 import AppLayout from '../components/HOC/AppLayout';
 import {getAllNotes} from '../api/notes';
 // import Entypo from "@expo/vector-icons/Entypo";
 import CustomButton from '../components/CustomButton';
 import NoteItem from '../components/NoteItem';
-import styles from '../styles';
+import Input from '../components/Input';
 // import { Ionicons } from "@expo/vector-icons";
 
 const HomeScreen = ({route, navigation}) => {
@@ -47,8 +41,8 @@ const HomeScreen = ({route, navigation}) => {
     <AppLayout>
       <View style={{flexDirection: 'row'}}>
         <View style={{flexDirection: 'row', flex: 1}}>
-          <TextInput
-            style={{...styles.input_base, flex: 1}}
+          <Input
+            style={{flex: 1}}
             placeholder="Search"
             onChangeText={setSearch}
             value={search}

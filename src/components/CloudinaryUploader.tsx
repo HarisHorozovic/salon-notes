@@ -2,6 +2,10 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Alert, Text, View} from 'react-native';
 // import * as ImagePicker from "expo-image-picker";
+import {
+  ImageLibraryOptions,
+  launchImageLibrary,
+} from 'react-native-image-picker';
 import {encode as btoa} from 'base-64';
 import CustomButton from './CustomButton';
 import {
@@ -82,6 +86,28 @@ const CloudinaryUploader = ({
   };
 
   const pickImage = async () => {
+    try {
+      const options: ImageLibraryOptions = {
+        mediaType: 'photo',
+        selectionLimit: 5,
+      };
+      const result = await launchImageLibrary(options);
+      console.log(
+        '____________________________________________________________________________________',
+      );
+      console.log(result);
+      console.log(
+        '____________________________________________________________________________________',
+      );
+    } catch (e) {
+      console.log(
+        '____________________________________________________________________________________',
+      );
+      console.log(e);
+      console.log(
+        '____________________________________________________________________________________',
+      );
+    }
     // No permissions request is necessary for launching the image library
     // let result: any = await ImagePicker.launchImageLibraryAsync({
     //   mediaTypes: ImagePicker.MediaTypeOptions.Images,

@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {login} from '../api/auth';
 import {Link} from '@react-navigation/native';
 import styles from '../styles';
 import CustomButton from '../components/CustomButton';
 import AppLayout from '../components/HOC/AppLayout';
+import Input from '../components/Input';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -25,13 +26,6 @@ const LoginScreen = ({navigation}) => {
 
   const handleLogin = async () => {
     try {
-      console.log(
-        '____________________________________________________________________________________',
-      );
-      console.log('onPress');
-      console.log(
-        '____________________________________________________________________________________',
-      );
       const token = await login(email, password);
       if (token) {
         await AsyncStorage.setItem('authToken', token);
@@ -58,13 +52,8 @@ const LoginScreen = ({navigation}) => {
           justifyContent: 'center',
         }}>
         <View style={styles.card}>
-          <TextInput
-            style={styles.input_base}
-            placeholder="Email"
-            onChangeText={setEmail}
-          />
-          <TextInput
-            style={styles.input_base}
+          <Input placeholder="Email" onChangeText={setEmail} />
+          <Input
             placeholder="Password"
             secureTextEntry={true}
             onChangeText={setPassword}

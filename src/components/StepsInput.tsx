@@ -1,8 +1,8 @@
-import {View, TextInput, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {NoteItemStep} from '../types';
 import React from 'react';
-import styles from '../styles';
 import CustomButton from './CustomButton';
+import Input from './Input';
 // import { FontAwesome } from "@expo/vector-icons";
 
 const inputStyles = StyleSheet.create({
@@ -27,16 +27,16 @@ export default function StepsInput({
 }) {
   return (
     <View style={inputStyles.container}>
-      <TextInput
-        style={[styles.input_base, inputStyles.input]}
+      <Input
+        style={inputStyles.input}
         placeholder="Key"
         onChangeText={val => {
           setValue(index, val, value.value);
         }}
         value={value?.key}
       />
-      <TextInput
-        style={[styles.input_base, inputStyles.input]}
+      <Input
+        style={inputStyles.input}
         placeholder="Value"
         onChangeText={val => {
           if (value.key) {
