@@ -3,7 +3,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 // import AntDesign from "@expo/vector-icons/AntDesign";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Card from './Card';
+import Card from '../Card';
 
 type NavigationItem = {
   text: string;

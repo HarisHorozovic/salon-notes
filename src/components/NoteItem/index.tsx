@@ -1,6 +1,6 @@
 import {Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Card from './Card';
+import Card from '../Card';
 
 const noteItemStyle = StyleSheet.create({
   note_container: {
@@ -36,7 +36,7 @@ export default function NoteItem({note}: {note: any; key?: string | number}) {
               ? {
                   uri: note.images[0] as any,
                 }
-              : require('../../assets/broken-image.png')
+              : require('../../../assets/broken-image.png')
           }
           style={{height: 80, width: undefined, aspectRatio: 1}}
         />

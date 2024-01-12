@@ -47,18 +47,54 @@ const getStyle = (isDarkMode: boolean) =>
     text_area: {height: 100, textAlignVertical: 'top'},
   });
 
+export const getStyleWithScheme = (
+  isDarkMode: boolean,
+  scheme: 'primary' | 'danger' | 'default',
+  disabled?: boolean,
+) => {
+  const colorScheme = isDarkMode ? colors.dark : colors.light;
+  return StyleSheet.create({
+    button: {
+      height: 40,
+      ...colorScheme.button[scheme],
+      paddingVertical: 5,
+      paddingHorizontal: 15,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 5,
+      shadowColor: 'rgba(0,0,0, .4)',
+      shadowOffset: {width: -2, height: 4},
+      shadowOpacity: 1,
+      shadowRadius: 1,
+      elevation: 5,
+      margin: 10,
+      opacity: disabled ? 0.7 : 1,
+    },
+  });
+};
+
 export const colors: any = {
   light: {
     appMainBackgroundColor: 'grey',
     backgroundColor: '#fff',
     color: '#000',
     borderColor: '#ccc',
+    button: {
+      primary: {backgroundColor: '#8F00FF', color: '#fff'},
+      danger: {backgroundColor: 'red', color: '#fff'},
+      default: {backgroundColor: '#ccc', color: '#000'},
+    },
   },
   dark: {
     appMainBackgroundColor: 'grey',
     backgroundColor: '#000',
     color: '#fff',
     borderColor: '#ccc',
+    button: {
+      primary: {backgroundColor: '#8F00FF', color: '#fff'},
+      danger: {backgroundColor: 'red', color: '#fff'},
+      default: {backgroundColor: '#ccc', color: '#000'},
+    },
   },
 };
 
