@@ -92,14 +92,11 @@ const ImageUploader = ({
         mediaType: 'photo',
         selectionLimit: 5,
       };
-      const result = await launchImageLibrary(options);
-      console.log(
-        '____________________________________________________________________________________',
-      );
-      console.log(result);
-      console.log(
-        '____________________________________________________________________________________',
-      );
+      const result: any = await launchImageLibrary(options);
+
+      if (!result.didCancel) {
+        setImages(result.assets);
+      }
     } catch (e) {
       console.log(
         '____________________________________________________________________________________',
@@ -109,19 +106,6 @@ const ImageUploader = ({
         '____________________________________________________________________________________',
       );
     }
-    // No permissions request is necessary for launching the image library
-    // let result: any = await ImagePicker.launchImageLibraryAsync({
-    //   mediaTypes: ImagePicker.MediaTypeOptions.Images,
-    //   allowsEditing: false,
-    //   allowsMultipleSelection: true,
-    //   // aspect: [4, 3],
-    //   quality: 1,
-    //   selectionLimit: 3,
-    // });
-    //
-    // if (!result.canceled) {
-    //   setImages(result.assets);
-    // }
   };
 
   return (
