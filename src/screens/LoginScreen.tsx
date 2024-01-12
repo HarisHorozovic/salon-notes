@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {login} from '../api/auth';
@@ -12,18 +12,6 @@ import Text from '../components/Text';
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const checkAuth = async () => {
-    const item = await AsyncStorage.getItem('authToken');
-
-    if (item) {
-      navigation.navigate('Home');
-    }
-  };
-  useEffect(() => {
-    checkAuth().then();
-    //   eslint-disable-next-line
-  }, []);
 
   const handleLogin = async () => {
     try {

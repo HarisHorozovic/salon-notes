@@ -23,6 +23,7 @@ import SignupScreen from './src/screens/SignupScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import DetailScreen from './src/screens/DetailScreen';
+import SplashScreen from './src/screens/SplashScreen';
 
 // type SectionProps = PropsWithChildren<{
 //   title: string;
@@ -118,7 +119,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Splash">
+        <Stack.Screen
+          name="Splash"
+          component={SplashScreen}
+          options={{title: 'Salon App'}}
+        />
         <Stack.Screen
           name="Signup"
           component={SignupScreen}
