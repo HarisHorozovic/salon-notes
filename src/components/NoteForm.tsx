@@ -1,4 +1,4 @@
-import {ScrollView, Text} from 'react-native';
+import {Text} from 'react-native';
 import {useState} from 'react';
 import CloudinaryUploader from './CloudinaryUploader';
 import styles from '../styles';
@@ -9,6 +9,7 @@ import FormImagePreview from './FormImagePreview';
 import {createNote} from '../api/notes';
 import {useNavigation} from '@react-navigation/native';
 import Input from './Input';
+import Card from './Card';
 
 export default function NoteForm({note}: {note: any}) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +30,7 @@ export default function NoteForm({note}: {note: any}) {
   const navigation = useNavigation();
 
   return (
-    <ScrollView style={{...styles.card, margin: 10}}>
+    <Card style={{margin: 10}} scroll>
       {/* title */}
       <Input
         placeholder="Title"
@@ -126,6 +127,6 @@ export default function NoteForm({note}: {note: any}) {
         }}
       />
       <Text></Text>
-    </ScrollView>
+    </Card>
   );
 }

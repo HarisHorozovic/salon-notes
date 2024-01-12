@@ -1,9 +1,10 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import styles from '../styles';
+import {Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Card from './Card';
 
 const noteItemStyle = StyleSheet.create({
   note_container: {
+    flex: 1,
     marginVertical: 5,
     marginHorizontal: 20,
     padding: 10,
@@ -27,7 +28,7 @@ export default function NoteItem({note}: {note: any; key?: string | number}) {
       onPress={() => {
         navigation.navigate('Detail' as any, note);
       }}>
-      <View style={[styles.container, noteItemStyle.note_container]}>
+      <Card style={noteItemStyle.note_container}>
         <Text style={noteItemStyle.text}>{note.title}</Text>
         <Image
           source={
@@ -39,7 +40,7 @@ export default function NoteItem({note}: {note: any; key?: string | number}) {
           }
           style={{height: 80, width: undefined, aspectRatio: 1}}
         />
-      </View>
+      </Card>
     </TouchableOpacity>
   );
 }

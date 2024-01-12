@@ -3,6 +3,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 // import AntDesign from "@expo/vector-icons/AntDesign";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Card from './Card';
 
 type NavigationItem = {
   text: string;
@@ -14,7 +15,6 @@ export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
 
   const styles = StyleSheet.create({
     nav: {
-      backgroundColor: '#fff',
       paddingVertical: 15,
       paddingHorizontal: 20,
       position: 'absolute',
@@ -24,6 +24,7 @@ export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
+      borderRadius: 0,
     },
     nav_item: {marginHorizontal: 5},
   });
@@ -38,7 +39,7 @@ export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
   };
 
   return (
-    <View style={styles.nav}>
+    <Card style={styles.nav}>
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
         {items.map((item: NavigationItem, index: number) => (
           <TouchableOpacity
@@ -57,6 +58,6 @@ export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
           {/*<AntDesign name="logout" size={24} />*/}
         </TouchableOpacity>
       </View>
-    </View>
+    </Card>
   );
 }

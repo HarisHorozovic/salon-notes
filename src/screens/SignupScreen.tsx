@@ -7,6 +7,7 @@ import styles from '../styles';
 import CustomButton from '../components/CustomButton';
 import AppLayout from '../components/HOC/AppLayout';
 import Input from '../components/Input';
+import Card from '../components/Card';
 
 const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -40,7 +41,7 @@ const SignupScreen = ({navigation}) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <View style={styles.card}>
+        <Card>
           <Input placeholder="Email" onChangeText={setEmail} />
           <Input
             placeholder="Password"
@@ -70,7 +71,7 @@ const SignupScreen = ({navigation}) => {
               Log in
             </Link>
           </View>
-        </View>
+        </Card>
       </View>
     </AppLayout>
   );
