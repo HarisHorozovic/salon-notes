@@ -15,4 +15,6 @@ export const navigationBarStyles = StyleSheet.create({
     margin: 0,
   },
   nav_item: {marginHorizontal: 5},
+  icon_list: {alignItems: 'center', justifyContent: 'center'},
+  icon_logout: {justifyContent: 'flex-end'},
 });

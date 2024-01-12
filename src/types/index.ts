@@ -9,3 +9,10 @@ export type NoteItem = {
   steps?: Array<NoteItemStep>;
   description?: string;
 };
+
+export type IconProps = {
+  iconProvider: 'fontawesome' | 'antdesign';
+  name: string;
+  size?: number;
+  color?: string;
+};
