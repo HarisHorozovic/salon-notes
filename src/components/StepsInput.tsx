@@ -1,8 +1,9 @@
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {NoteItemStep} from '../types';
 import React from 'react';
 import CustomButton from './CustomButton';
 import Input from './Input';
+import Text from './Text';
 // import { FontAwesome } from "@expo/vector-icons";
 
 const inputStyles = StyleSheet.create({

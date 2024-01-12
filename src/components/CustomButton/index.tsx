@@ -1,14 +1,13 @@
 import {
   GestureResponderEvent,
   StyleSheet,
-  Text,
   TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
-import {useState} from 'react';
 import {getStyleWithScheme} from '../../styles';
 import {getStyleForProp} from '../../utils';
+import Text from '../Text';
 
 export default function CustomButton({
   style,

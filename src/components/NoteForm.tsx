@@ -1,7 +1,5 @@
-import {Text} from 'react-native';
 import {useState} from 'react';
 import CloudinaryUploader from './CloudinaryUploader';
-import styles from '../styles';
 import {NoteItem, NoteItemStep} from '../types';
 import StepsInput from './StepsInput';
 import CustomButton from './CustomButton';
@@ -10,6 +8,8 @@ import {createNote} from '../api/notes';
 import {useNavigation} from '@react-navigation/native';
 import Input from './Input';
 import Card from './Card';
+import Text from './Text';
+import getStyle from '../styles';
 
 export default function NoteForm({note}: {note: any}) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -95,7 +95,7 @@ export default function NoteForm({note}: {note: any}) {
       />
       {/* description */}
       <Input
-        style={styles.text_area}
+        style={getStyle(false).text_area}
         placeholder="Description"
         onChangeText={value => {
           setNewNote({...newNote, description: value});

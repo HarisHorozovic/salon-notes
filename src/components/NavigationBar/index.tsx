@@ -1,9 +1,10 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 // import AntDesign from "@expo/vector-icons/AntDesign";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from '../Card';
+import Text from '../Text';
 
 type NavigationItem = {
   text: string;

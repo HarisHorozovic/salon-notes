@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Alert, Text, View} from 'react-native';
+import {Alert, View} from 'react-native';
 // import * as ImagePicker from "expo-image-picker";
 import {
   ImageLibraryOptions,
@@ -14,6 +14,7 @@ import {
   CLOUDINARY_API_SECRET,
   CLOUDINARY_UPLOAD_PRESET,
 } from '@env';
+import Text from './Text';
 // import { Entypo } from "@expo/vector-icons";
 
 const CloudinaryUploader = ({

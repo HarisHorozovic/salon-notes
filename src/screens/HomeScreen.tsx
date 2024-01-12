@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, ActivityIndicator, Text} from 'react-native';
+import {View, ScrollView, ActivityIndicator} from 'react-native';
 import AppLayout from '../components/HOC/AppLayout';
 import {getAllNotes} from '../api/notes';
 // import Entypo from "@expo/vector-icons/Entypo";
 import CustomButton from '../components/CustomButton';
 import NoteItem from '../components/NoteItem';
 import Input from '../components/Input';
+import Text from '../components/Text';
 // import { Ionicons } from "@expo/vector-icons";
 
 const HomeScreen = ({route, navigation}) => {

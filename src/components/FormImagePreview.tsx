@@ -1,8 +1,9 @@
-import {Image, Text, View} from 'react-native';
+import {Image, View} from 'react-native';
 import React from 'react';
 import {NoteItem} from '../types';
 // import { FontAwesome } from "@expo/vector-icons";
 import CustomButton from './CustomButton';
+import Text from './Text';
 
 export default function FormImagePreview({
   images,

@@ -1,27 +1,12 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {colors} from '../styles';
-import ImagePreview from './ImagePreview';
-import StepsPreview from './StepsPreview';
-import CustomButton from './CustomButton';
+import ImagePreview from '../ImagePreview';
+import StepsPreview from '../StepsPreview';
+import CustomButton from '../CustomButton';
+import Card from '../Card';
+import {notePreviewStyle} from './style';
+import Text from '../Text';
 // import { AntDesign } from "@expo/vector-icons";
-
-const styles = StyleSheet.create({
-  container: {
-    ...colors.light,
-    borderRadius: 2,
-    elevation: 5,
-    margin: 10,
-    padding: 10,
-  },
-  button_container: {
-    alignItems: 'flex-end',
-  },
-  title: {
-    fontWeight: 'bold',
-  },
-});
 
 export default function NotePreview({
   note,
@@ -31,8 +16,8 @@ export default function NotePreview({
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
-    <View style={styles.container}>
-      <View style={styles.button_container}>
+    <Card>
+      <View style={notePreviewStyle.button_container}>
         <CustomButton
           color="primary"
           onPress={() => {
@@ -47,10 +32,10 @@ export default function NotePreview({
           {/*/>*/}
         </CustomButton>
       </View>
-      <Text style={styles.title}>{note.title}</Text>
+      <Text style={notePreviewStyle.title}>{note.title}</Text>
       <ImagePreview images={note.images} />
       <StepsPreview steps={note.steps} />
       <Text>{note.description}</Text>
-    </View>
+    </Card>
   );
 }

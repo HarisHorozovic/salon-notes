@@ -10,6 +10,7 @@ const getStyle = (isDarkMode: boolean) =>
       color: isDarkMode ? colors.dark.color : colors.light.color,
       padding: 20,
       elevation: 5,
+      margin: 10,
     },
     app_layout: {
       flex: 1,
@@ -36,6 +37,9 @@ const getStyle = (isDarkMode: boolean) =>
     },
     link: {
       color: 'blue',
+    },
+    text: {
+      color: isDarkMode ? colors.dark.color : colors.light.color,
     },
 
     container: {
