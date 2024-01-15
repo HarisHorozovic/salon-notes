@@ -5,7 +5,7 @@ import {API_URL} from '@env';
 const axiosInstance = axios.create({
   baseURL: API_URL,
 });
-
+axiosInstance.defaults.baseURL = API_URL;
 axiosInstance.interceptors.request.use(
   async (config: any) => {
     const token = await AsyncStorage.getItem('authToken');
