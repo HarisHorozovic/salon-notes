@@ -21,3 +21,13 @@ export const createNote = async (data: {[k: string]: any}) => {
 
   return response.data;
 };
+
+export const deleteNote = async (id: string) => {
+  try {
+    await axiosInstance.delete(`/notes/${id}`);
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+};

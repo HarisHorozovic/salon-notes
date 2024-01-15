@@ -17,4 +17,10 @@ export const noteItemStyle = StyleSheet.create({
   text: {
     fontWeight: 'bold',
   },
+  note_title: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+  },
 });

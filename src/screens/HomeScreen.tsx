@@ -91,7 +91,7 @@ const HomeScreen = ({route, navigation}) => {
 
       <ScrollView>
         {notes.map((note: any, index: number) => (
-          <NoteItem key={index} note={note} />
+          <NoteItem key={index} note={note} getNotes={getNotes} />
         ))}
         {loading && <ActivityIndicator size="large" color="#8F00FF" />}
         <CustomButton
