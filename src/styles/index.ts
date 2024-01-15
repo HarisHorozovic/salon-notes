@@ -91,14 +91,14 @@ export const colors: any = {
     },
   },
   dark: {
-    appMainBackgroundColor: 'grey',
-    backgroundColor: '#000',
-    color: '#fff',
-    borderColor: '#ccc',
+    appMainBackgroundColor: '#141218',
+    backgroundColor: '#2B2930',
+    color: '#E6E0E9',
+    borderColor: '#938F99',
     button: {
-      primary: {backgroundColor: '#8F00FF', color: '#fff'},
-      danger: {backgroundColor: 'red', color: '#fff'},
-      default: {backgroundColor: '#ccc', color: '#000'},
+      primary: {backgroundColor: '#6750A4', color: '#FFF'},
+      danger: {backgroundColor: '#B3261E', color: '#fff'},
+      default: {backgroundColor: '#CCC2DC', color: '#332D41'},
     },
   },
   global: {
