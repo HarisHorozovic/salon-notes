@@ -36,7 +36,7 @@ const getStyle = (isDarkMode: boolean) =>
       paddingHorizontal: 5,
     },
     link: {
-      color: 'blue',
+      color: '#6750A4',
     },
     text: {
       color: isDarkMode ? colors.dark.color : colors.light.color,
@@ -80,14 +80,14 @@ export const getStyleWithScheme = (
 
 export const colors: any = {
   light: {
-    appMainBackgroundColor: 'grey',
-    backgroundColor: '#fff',
-    color: '#000',
+    appMainBackgroundColor: '#DED8E1',
+    backgroundColor: '#F7F2FA',
+    color: '#1D1B20',
     borderColor: '#ccc',
     button: {
-      primary: {backgroundColor: '#8F00FF', color: '#fff'},
-      danger: {backgroundColor: 'red', color: '#fff'},
-      default: {backgroundColor: '#ccc', color: '#000'},
+      primary: {backgroundColor: '#6750A4', color: '#fff'},
+      danger: {backgroundColor: '#B3261E', color: '#fff'},
+      default: {backgroundColor: '#49454F', color: '#FEF7FF'},
     },
   },
   dark: {
@@ -102,7 +102,7 @@ export const colors: any = {
     },
   },
   global: {
-    danger: 'red',
+    danger: '#B3261E',
   },
 };
 

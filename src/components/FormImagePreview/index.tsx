@@ -1,10 +1,12 @@
-import {Image, View} from 'react-native';
+import {Image, useColorScheme, View} from 'react-native';
 import React from 'react';
 import {NoteItem} from '../../types';
 // import { FontAwesome } from "@expo/vector-icons";
 import CustomButton from '../CustomButton';
 import Text from '../Text';
 import {formImagePreviewStyles} from './style';
+import {colors} from '../../styles';
+import Icon from '../Icon';
 
 export default function FormImagePreview({
   images,
@@ -15,6 +17,8 @@ export default function FormImagePreview({
   setNewNote: React.Dispatch<React.SetStateAction<NoteItem>>;
   newNote: NoteItem;
 }) {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return images && images.length > 0 ? (
     <View style={formImagePreviewStyles.main_container}>
       {images.map((uri: any, index: number) => (
@@ -37,8 +41,15 @@ export default function FormImagePreview({
 
               setNewNote({...newNote, images: imgs});
             }}>
-            <Text>Remove icon</Text>
-            {/*<FontAwesome name="remove" size={14} color="#fff" />*/}
+            <Icon
+              iconProvider="fontawesome"
+              name="remove"
+              color={
+                isDarkMode
+                  ? colors.dark.button.danger.color
+                  : colors.light.button.danger.color
+              }
+            />
           </CustomButton>
         </View>
       ))}

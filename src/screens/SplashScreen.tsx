@@ -2,9 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect} from 'react';
 import AppLayout from '../components/HOC/AppLayout';
 import Icon from '../components/Icon';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, useColorScheme, View} from 'react-native';
+import {colors} from '../styles';
 
 export default function SplashScreen({navigation}) {
+  const isDarkMode = useColorScheme() === 'dark';
   useEffect(() => {
     const checkAuth = async () => {
       const item = await AsyncStorage.getItem('authToken');
@@ -26,7 +28,12 @@ export default function SplashScreen({navigation}) {
   return (
     <AppLayout hideNavigation>
       <View style={style.center}>
-        <Icon iconProvider="fontawesome" name="hand-scissors-o" size={64} />
+        <Icon
+          iconProvider="fontawesome"
+          name="hand-scissors-o"
+          size={64}
+          color={isDarkMode ? colors.dark.color : colors.light.color}
+        />
       </View>
     </AppLayout>
   );

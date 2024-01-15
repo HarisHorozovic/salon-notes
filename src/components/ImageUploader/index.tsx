@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Alert, View} from 'react-native';
+import {Alert, useColorScheme, View} from 'react-native';
 import {
   ImageLibraryOptions,
   launchImageLibrary,
@@ -16,6 +16,8 @@ import {
 import Text from '../Text';
 import {imageUploaderStyles} from './style';
 import {showMessage} from 'react-native-flash-message';
+import {colors} from '../../styles';
+import Icon from '../Icon';
 // import { Entypo } from "@expo/vector-icons";
 
 const ImageUploader = ({
@@ -31,6 +33,7 @@ const ImageUploader = ({
 }) => {
   const [images, setImages] = useState(null);
   const [uploadedImagesNumber, setUploadedImagesNumber] = useState<number>(0);
+  const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
     uploadImage().then();
@@ -113,7 +116,24 @@ const ImageUploader = ({
       <CustomButton color="default" onPress={pickImage}>
         <View style={imageUploaderStyles.button_container}>
           {/*<Entypo name="image" size={24} color="black" />*/}
-          <Text style={imageUploaderStyles.button_text}>New image</Text>
+          <Icon
+            iconProvider="entypo"
+            name="image"
+            color={
+              isDarkMode
+                ? colors.dark.button.danger.color
+                : colors.light.button.danger.color
+            }
+          />
+          <Text
+            style={{
+              ...imageUploaderStyles.button_text,
+              color: isDarkMode
+                ? colors.dark.button.danger.color
+                : colors.light.button.danger.color,
+            }}>
+            New image
+          </Text>
         </View>
       </CustomButton>
     </View>

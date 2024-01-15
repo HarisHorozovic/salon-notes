@@ -1,10 +1,12 @@
-import {View} from 'react-native';
+import {useColorScheme, View} from 'react-native';
 import {NoteItemStep} from '../../types';
 import React from 'react';
 import CustomButton from '../CustomButton';
 import Input from '../Input';
 import Text from '../Text';
 import {stepsInputStyles} from './style';
+import Icon from '../Icon';
+import {colors} from '../../styles';
 // import { FontAwesome } from "@expo/vector-icons";
 
 export default function StepsInput({
@@ -19,6 +21,7 @@ export default function StepsInput({
   setValue: (index: number, key?: string, value?: any) => void;
   onRemove: (index: number) => void;
 }) {
+  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={stepsInputStyles.container}>
       <Input
@@ -40,8 +43,15 @@ export default function StepsInput({
         value={value?.value}
       />
       <CustomButton color="danger" onPress={() => onRemove(index)}>
-        <Text>Remove Icon</Text>
-        {/*<FontAwesome name="remove" size={14} color="#fff" />*/}
+        <Icon
+          iconProvider="fontawesome"
+          name="remove"
+          color={
+            isDarkMode
+              ? colors.dark.button.danger.color
+              : colors.light.button.danger.color
+          }
+        />
       </CustomButton>
     </View>
   );

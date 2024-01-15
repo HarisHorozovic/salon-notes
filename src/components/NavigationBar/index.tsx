@@ -1,10 +1,11 @@
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, useColorScheme, View} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from '../Card';
 import {navigationBarStyles} from './style';
 import Icon from '../Icon';
+import {colors} from '../../styles';
 
 type NavigationItem = {
   text: string;
@@ -13,6 +14,7 @@ type NavigationItem = {
 };
 export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
   const navigation = useNavigation();
+  const isDarkMode = useColorScheme() === 'dark';
 
   const handleLogout = async () => {
     const item = await AsyncStorage.getItem('authToken');
@@ -32,14 +34,22 @@ export default function NavigationBar({items}: {items: Array<NavigationItem>}) {
             onPress={() => {
               navigation.navigate(item.to);
             }}>
-            <Icon iconProvider="antdesign" name={item.icon} color="#fff" />
+            <Icon
+              iconProvider="antdesign"
+              name={item.icon}
+              color={isDarkMode ? colors.dark.color : colors.light.color}
+            />
             {/*<AntDesign name={item.icon} size={24} />*/}
           </TouchableOpacity>
         ))}
       </View>
       <View style={navigationBarStyles.icon_logout}>
         <TouchableOpacity onPress={handleLogout}>
-          <Icon iconProvider="antdesign" name="logout" color="#fff" />
+          <Icon
+            iconProvider="antdesign"
+            name="logout"
+            color={isDarkMode ? colors.dark.color : colors.light.color}
+          />
         </TouchableOpacity>
       </View>
     </Card>

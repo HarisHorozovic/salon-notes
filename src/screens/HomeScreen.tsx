@@ -1,5 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, ActivityIndicator} from 'react-native';
+import {
+  View,
+  ScrollView,
+  ActivityIndicator,
+  useColorScheme,
+} from 'react-native';
 import AppLayout from '../components/HOC/AppLayout';
 import {getAllNotes} from '../api/notes';
 import CustomButton from '../components/CustomButton';
@@ -7,12 +12,14 @@ import NoteItem from '../components/NoteItem';
 import Input from '../components/Input';
 import Icon from '../components/Icon';
 import {showMessage} from 'react-native-flash-message';
+import {colors} from '../styles';
 
 const HomeScreen = ({route, navigation}) => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
+  const isDarkMode = useColorScheme() === 'dark';
 
   const getNotes = async (page: number = 1, searchText?: string) => {
     setLoading(true);
@@ -51,7 +58,15 @@ const HomeScreen = ({route, navigation}) => {
               setNotes([]);
               getNotes(1, search).then();
             }}>
-            <Icon iconProvider="ionic" name="search" />
+            <Icon
+              iconProvider="ionic"
+              name="search"
+              color={
+                isDarkMode
+                  ? colors.dark.button.default.color
+                  : colors.light.button.default.color
+              }
+            />
           </CustomButton>
         </View>
         {/* Search bar functionality */}
@@ -61,7 +76,15 @@ const HomeScreen = ({route, navigation}) => {
           onPress={() => {
             navigation.navigate('Detail');
           }}>
-          <Icon iconProvider="entypo" name="add-to-list" />
+          <Icon
+            iconProvider="entypo"
+            name="add-to-list"
+            color={
+              isDarkMode
+                ? colors.dark.button.primary.color
+                : colors.light.button.primary.color
+            }
+          />
         </CustomButton>
       </View>
       {/*<Button title={"Send req"} onPress={() => } />*/}

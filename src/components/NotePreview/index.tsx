@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {useColorScheme, View} from 'react-native';
 import React from 'react';
 import ImagePreview from '../ImagePreview';
 import StepsPreview from '../StepsPreview';
@@ -7,6 +7,7 @@ import Card from '../Card';
 import {notePreviewStyle} from './style';
 import Text from '../Text';
 import Icon from '../Icon';
+import {colors} from '../../styles';
 
 export default function NotePreview({
   note,
@@ -15,6 +16,8 @@ export default function NotePreview({
   note: any;
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <Card>
       <View style={notePreviewStyle.button_container}>
@@ -23,7 +26,16 @@ export default function NotePreview({
           onPress={() => {
             setIsEdit(true);
           }}>
-          <Icon iconProvider="antdesign" name="edit" style={{marginRight: 2}} />
+          <Icon
+            iconProvider="antdesign"
+            name="edit"
+            style={{marginRight: 2}}
+            color={
+              isDarkMode
+                ? colors.dark.button.primary.color
+                : colors.light.button.primary.color
+            }
+          />
         </CustomButton>
       </View>
       <Text style={notePreviewStyle.title}>{note.title}</Text>
