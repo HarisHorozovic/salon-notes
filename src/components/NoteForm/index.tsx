@@ -110,10 +110,14 @@ export default function NoteForm({note}: {note: any}) {
           setLoading(true);
           try {
             await createNote(newNote);
+            showMessage({
+              message: 'Note is saved',
+              type: 'success',
+            });
             navigation.navigate('Home' as any);
           } catch (err) {
             showMessage({
-              message: 'Something went wrong creating note, please try again',
+              message: 'Something went wrong saving note, please try again',
               type: 'danger',
             });
           }

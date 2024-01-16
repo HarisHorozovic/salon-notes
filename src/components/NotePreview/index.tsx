@@ -8,6 +8,7 @@ import {notePreviewStyle} from './style';
 import Text from '../Text';
 import Icon from '../Icon';
 import {colors} from '../../styles';
+import RemoveNote from '../RemoveNote';
 
 export default function NotePreview({
   note,
@@ -21,6 +22,7 @@ export default function NotePreview({
   return (
     <Card>
       <View style={notePreviewStyle.button_container}>
+        <RemoveNote id={note._id} to={'Home'} />
         <CustomButton
           color="primary"
           onPress={() => {
