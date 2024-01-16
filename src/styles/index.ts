@@ -60,10 +60,10 @@ export const getStyleWithScheme = (
   const colorScheme = isDarkMode ? colors.dark : colors.light;
   return StyleSheet.create({
     button: {
-      height: 40,
+      height: 30,
       ...colorScheme.button[scheme],
-      paddingVertical: 5,
-      paddingHorizontal: 15,
+      paddingVertical: 0,
+      paddingHorizontal: 10,
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 5,
@@ -72,7 +72,7 @@ export const getStyleWithScheme = (
       shadowOpacity: 1,
       shadowRadius: 1,
       elevation: 5,
-      margin: 10,
+      margin: 5,
       opacity: disabled ? 0.7 : 1,
     },
   });

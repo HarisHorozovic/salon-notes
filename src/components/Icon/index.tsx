@@ -22,7 +22,7 @@ export default function Icon({
       return (
         <FontAwesomeIcon
           name={name}
-          size={size || 24}
+          size={size || 16}
           color={color || baseColor}
           style={style}
         />
@@ -31,7 +31,7 @@ export default function Icon({
       return (
         <AntDesignIcon
           name={name}
-          size={size || 24}
+          size={size || 16}
           color={color || baseColor}
           style={style}
         />
@@ -40,7 +40,7 @@ export default function Icon({
       return (
         <IonicIcon
           name={name}
-          size={size || 24}
+          size={size || 16}
           color={color || baseColor}
           style={style}
         />
@@ -49,7 +49,7 @@ export default function Icon({
       return (
         <EntypoIcon
           name={name}
-          size={size || 24}
+          size={size || 16}
           color={color || baseColor}
           style={style}
         />

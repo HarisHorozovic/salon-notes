@@ -53,10 +53,16 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <AppLayout>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', paddingHorizontal: 20}}>
         <View style={{flexDirection: 'row', flex: 1}}>
           <Input
-            style={{flex: 1}}
+            style={{
+              flex: 1,
+              height: 30,
+              lineHeight: 30,
+              fontSize: 12,
+              paddingVertical: 2,
+            }}
             placeholder="Search"
             onChangeText={setSearch}
             value={search}
@@ -89,6 +95,7 @@ const HomeScreen = ({navigation}) => {
           <Icon
             iconProvider="entypo"
             name="add-to-list"
+            size={16}
             color={
               isDarkMode
                 ? colors.dark.button.primary.color
