@@ -17,12 +17,12 @@ export default function NoteForm({note}: {note: any}) {
   const [newNote, setNewNote] = useState<NoteItem>(
     note || {
       title: '',
-      // images: [],
       images: [],
       steps: [],
       description: '',
     },
   );
+  const [errors, setErrors] = useState<{[k: string]: string}>({});
 
   const navigation = useNavigation();
 
@@ -32,9 +32,15 @@ export default function NoteForm({note}: {note: any}) {
       <Input
         placeholder="Title"
         onChangeText={value => {
+          const newErrors = {...errors};
+          if (newErrors.title) {
+            delete newErrors.title;
+            setErrors(newErrors);
+          }
           setNewNote({...newNote, title: value});
         }}
         defaultValue={newNote.title}
+        error={errors.title}
       />
       {/* images */}
       <FormImagePreview
@@ -109,12 +115,16 @@ export default function NoteForm({note}: {note: any}) {
         onPress={async () => {
           setLoading(true);
           try {
-            await createNote(newNote);
-            showMessage({
-              message: 'Note is saved',
-              type: 'success',
-            });
-            navigation.navigate('Home' as any);
+            if (!newNote.title || newNote.title === '') {
+              setErrors({title: 'Note title is required'});
+            } else {
+              await createNote(newNote);
+              showMessage({
+                message: 'Note is saved',
+                type: 'success',
+              });
+              navigation.navigate('Home' as any);
+            }
           } catch (err) {
             showMessage({
               message: 'Something went wrong saving note, please try again',
