@@ -14,7 +14,7 @@ import Icon from '../components/Icon';
 import {showMessage} from 'react-native-flash-message';
 import {colors} from '../styles';
 
-const HomeScreen = ({route, navigation}) => {
+const HomeScreen = ({navigation}) => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +39,17 @@ const HomeScreen = ({route, navigation}) => {
   useEffect(() => {
     getNotes(currentPage).then();
     //   eslint-disable-next-line
-  }, [route, currentPage]);
+  }, [currentPage]);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      setNotes([]);
+      getNotes(1).then();
+    });
+
+    return unsubscribe;
+    //   eslint-disable-next-line
+  }, [navigation]);
 
   return (
     <AppLayout>
