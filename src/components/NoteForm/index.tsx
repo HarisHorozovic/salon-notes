@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {NoteItem, NoteItemStep} from '../../types';
 import StepsInput from '../StepsInput';
 import CustomButton from '../CustomButton';
@@ -8,11 +8,13 @@ import {useNavigation} from '@react-navigation/native';
 import Input from '../Input';
 import Card from '../Card';
 import Text from '../Text';
-import getStyle from '../../styles';
+import getStyle, {colors} from '../../styles';
 import ImageUploader from '../ImageUploader';
 import {showMessage} from 'react-native-flash-message';
+import {ActivityIndicator, useColorScheme} from 'react-native';
 
 export default function NoteForm({note}: {note: any}) {
+  const isDarkMode = useColorScheme() === 'dark';
   const [loading, setLoading] = useState<boolean>(false);
   const [newNote, setNewNote] = useState<NoteItem>(
     note || {
@@ -110,7 +112,7 @@ export default function NoteForm({note}: {note: any}) {
 
       <CustomButton
         color="primary"
-        label={loading ? 'Saving' : 'Save'}
+        label={loading ? '' : 'Save'}
         disabled={loading}
         onPress={async () => {
           setLoading(true);
@@ -132,8 +134,18 @@ export default function NoteForm({note}: {note: any}) {
             });
           }
           setLoading(false);
-        }}
-      />
+        }}>
+        {loading && (
+          <ActivityIndicator
+            size="small"
+            color={
+              isDarkMode
+                ? colors.dark.button.primary.color
+                : colors.light.button.primary.color
+            }
+          />
+        )}
+      </CustomButton>
       <Text></Text>
     </Card>
   );

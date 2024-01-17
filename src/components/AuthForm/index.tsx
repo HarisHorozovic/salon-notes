@@ -1,13 +1,17 @@
 import Input from '../Input';
 import CustomButton from '../CustomButton';
-import {View} from 'react-native';
+import {ActivityIndicator, useColorScheme, View} from 'react-native';
 import React, {useState} from 'react';
 import {getAuthFormValidationErrors} from './validator';
+import {colors} from '../../styles';
 
-export default function AuthForm({onPress}: AuthFormProps) {
+export default function AuthForm({onPress, buttonLabel}: AuthFormProps) {
+  const isDarkMode = useColorScheme() === 'dark';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   return (
     <View>
@@ -38,21 +42,35 @@ export default function AuthForm({onPress}: AuthFormProps) {
       />
 
       <CustomButton
-        label="Login"
-        onPress={() => {
+        label={submitting ? '' : buttonLabel}
+        disabled={submitting}
+        onPress={async () => {
           const err = getAuthFormValidationErrors(email, password);
           if (Object.keys(err).length === 0) {
-            onPress(email, password);
+            setSubmitting(true);
+            await onPress(email, password);
+            setSubmitting(false);
           } else {
             setErrors(err);
           }
         }}
-        color="primary"
-      />
+        color="primary">
+        {submitting && (
+          <ActivityIndicator
+            size="small"
+            color={
+              isDarkMode
+                ? colors.dark.button.primary.color
+                : colors.light.button.primary.color
+            }
+          />
+        )}
+      </CustomButton>
     </View>
   );
 }
 
 export type AuthFormProps = {
-  onPress: (email: string, password: string) => void;
+  buttonLabel: string;
+  onPress: (email: string, password: string) => Promise<void>;
 };

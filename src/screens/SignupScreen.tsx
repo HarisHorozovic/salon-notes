@@ -18,8 +18,11 @@ const SignupScreen = ({navigation}) => {
         await AsyncStorage.setItem('authToken', token);
         navigation.navigate('Home');
       }
-    } catch (error) {
-      showMessage({message: 'Invalid credentials', type: 'danger'});
+    } catch (error: any) {
+      showMessage({
+        message: error?.response?.data?.message || 'Invalid credentials',
+        type: 'danger',
+      });
     }
   };
 
@@ -33,7 +36,7 @@ const SignupScreen = ({navigation}) => {
           justifyContent: 'center',
         }}>
         <Card>
-          <AuthForm onPress={handleSignup} />
+          <AuthForm onPress={handleSignup} buttonLabel="Signup" />
 
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <Text>Don't have an account?</Text>

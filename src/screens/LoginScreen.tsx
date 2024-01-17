@@ -34,7 +34,7 @@ const LoginScreen = ({navigation}) => {
           justifyContent: 'center',
         }}>
         <Card>
-          <AuthForm onPress={handleLogin} />
+          <AuthForm onPress={handleLogin} buttonLabel="Login" />
 
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <Text>Don't have an account?</Text>

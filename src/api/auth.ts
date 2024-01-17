@@ -21,6 +21,6 @@ export const signup = async (email: string, password: string) => {
 
     return response.data.token;
   } catch (err) {
-    return null;
+    throw err;
   }
 };
