@@ -119,7 +119,7 @@ const HomeScreen = ({navigation}) => {
       {/*<Button title={"Send req"} onPress={() => } />*/}
 
       <ScrollView>
-        {notes.map((note: any, index: number) => (
+        {notes?.map((note: any, index: number) => (
           <NoteItem key={index} note={note} getNotes={getNotes} />
         ))}
         {loading && (

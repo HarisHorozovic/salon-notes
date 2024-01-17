@@ -13,8 +13,6 @@ export const formImagePreviewStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 180,
-    height: undefined,
     aspectRatio: 1,
     margin: 5,
   },
