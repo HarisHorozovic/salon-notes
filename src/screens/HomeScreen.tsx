@@ -4,6 +4,7 @@ import {
   ScrollView,
   ActivityIndicator,
   useColorScheme,
+  TouchableOpacity,
 } from 'react-native';
 import AppLayout from '../components/HOC/AppLayout';
 import {getAllNotes} from '../api/notes';
@@ -37,7 +38,7 @@ const HomeScreen = ({navigation}) => {
   };
 
   useEffect(() => {
-    getNotes(currentPage).then();
+    getNotes(currentPage, search).then();
     //   eslint-disable-next-line
   }, [currentPage]);
 
@@ -55,18 +56,29 @@ const HomeScreen = ({navigation}) => {
     <AppLayout>
       <View style={{flexDirection: 'row', paddingHorizontal: 20}}>
         <View style={{flexDirection: 'row', flex: 1}}>
-          <Input
-            style={{
-              flex: 1,
-              height: 30,
-              lineHeight: 30,
-              fontSize: 12,
-              paddingVertical: 2,
-            }}
-            placeholder="Search"
-            onChangeText={setSearch}
-            value={search}
-          />
+          <View style={{flex: 1, position: 'relative'}}>
+            <Input
+              style={{
+                flex: 1,
+                height: 30,
+                lineHeight: 30,
+                fontSize: 12,
+                paddingVertical: 2,
+              }}
+              placeholder="Search"
+              onChangeText={setSearch}
+              value={search}
+            />
+            <TouchableOpacity
+              onPress={() => {
+                setNotes([]);
+                setSearch('');
+                getNotes(1, '').then();
+              }}
+              style={{position: 'absolute', right: 10, bottom: 12}}>
+              <Icon iconProvider="fontawesome" name="remove" />
+            </TouchableOpacity>
+          </View>
           <CustomButton
             color="default"
             onPress={() => {
